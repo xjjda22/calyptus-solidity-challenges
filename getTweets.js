@@ -1,42 +1,33 @@
-// getTweets.js
-const needle = require('needle');
+// File: index.js
+
+const { TwitterApi } = require('twitter-api-v2');
 require('dotenv').config();
 
-const token = process.env.TWITTER_BEARER_TOKEN;
-const endpointUrl = 'https://api.twitter.com/2/tweets/search/all';
+// Load Twitter API keys and tokens from .env file
+const client = new TwitterApi(process.env.BEARER_TOKEN);
+// const client = new TwitterApi({
+//   appKey: process.env.CONSUMER_KEY,
+//   appSecret: process.env.CONSUMER_SECRET,
+//   accessToken: process.env.ACCESS_TOKEN,
+//   accessSecret: process.env.ACCESS_TOKEN_SECRET,
+// });
 
-async function getTweets() {
-  const params = {
-    'query': 'from:CalyptusCareers "Solidity Challenge #"',
-    'tweet.fields': 'created_at',
-    'max_results': 10
-  };
-
-  const options = {
-    headers: {
-      'authorization': `Bearer ${token}`
-    }
-  };
-
+// Function to search and read tweets
+async function searchTweetsFromUser(query, username) {
   try {
-    const response = await needle('get', endpointUrl, params, options);
-
-    if (response.body) {
-      const tweets = response.body.data;
-      if (tweets && tweets.length > 0) {
-        console.log(`Found ${tweets.length} tweets:`);
-        tweets.forEach(tweet => {
-          console.log(`- ${tweet.text} (created at: ${tweet.created_at})`);
-        });
-      } else {
-        console.log('No tweets found.');
-      }
-    } else {
-      console.error('Error fetching tweets:', response.body);
-    }
+    const tweets = await client.v2.search(query, {
+      'tweet.fields': 'author_id,created_at',
+      expansions: 'author_id',
+      max_results: 100,
+      query: `from:${username} "${query}"`
+    });
+    console.log('Tweets:', tweets.data);
   } catch (error) {
     console.error('Error fetching tweets:', error);
   }
 }
 
-getTweets();
+// Example query
+const query = 'Solidity Challenge #';
+const username = 'CalyptusCareers';
+searchTweetsFromUser(query, username);
