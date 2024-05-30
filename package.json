@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write './**/*.{js,jsx,tsx,css,json}'"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "needle": "^3.3.1",
+    "prettier": "^3.2.5",
     "twitter-api-v2": "^1.17.0"
   }
 }

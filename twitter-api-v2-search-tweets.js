@@ -14,20 +14,22 @@ const client = new TwitterApi(process.env.BEARER_TOKEN);
 
 // Function to search and read tweets
 async function searchTweetsFromUser(query, username) {
-  try {
-    const tweets = await client.v2.search(query, {
-      'tweet.fields': 'author_id,created_at',
-      expansions: 'author_id',
-      max_results: 100,
-      query: `from:${username} "${query}"`
-    });
-    console.log('Tweets:', tweets.data);
-  } catch (error) {
-    console.error('Error fetching tweets:', error);
-  }
+    try {
+        const tweets = await client.v2.search(query, {
+            'tweet.fields': 'author_id,created_at',
+            expansions: 'author_id',
+            max_results: 100,
+            query: `from:${username} "${query}"`,
+        });
+        console.log('Tweets:', tweets.data);
+    } catch (error) {
+        console.error('Error fetching tweets:', error);
+    }
 }
 
 // Example query
 const query = 'Solidity Challenge #';
 const username = 'CalyptusCareers';
 searchTweetsFromUser(query, username);
+
+process.exit();
