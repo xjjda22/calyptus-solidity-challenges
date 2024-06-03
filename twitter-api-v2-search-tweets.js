@@ -23,13 +23,14 @@ async function searchTweetsFromUser(query, username) {
         });
         console.log('Tweets:', tweets.data);
     } catch (error) {
-        console.error('Error fetching tweets:', error);
+        console.log('Error fetching tweets:', error);
     }
 }
 
 // Example query
+console.log('start --');
 const query = 'Solidity Challenge #';
 const username = 'CalyptusCareers';
 searchTweetsFromUser(query, username);
-
+console.log('end --');
 process.exit();
