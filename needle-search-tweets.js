@@ -2,6 +2,7 @@
 // https://developer.twitter.com/en/docs/twitter-api/tweets/search/quick-start/recent-search
 
 const needle = require('needle');
+require('dotenv').config();
 
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
@@ -31,13 +32,14 @@ async function searchTweetsFromUser(query, username) {
             console.log('Tweets:', res.body);
         }
     } catch (error) {
-        console.error('Error fetching tweets:', error);
+        console.log('Error fetching tweets:', error);
     }
 }
 
 // Example query
+console.log('start --');
 const query = 'Solidity Challenge #';
 const username = 'CalyptusCareers';
 searchTweetsFromUser(query, username);
-
+console.log('end --');
 process.exit();
