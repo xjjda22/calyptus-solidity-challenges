@@ -12,7 +12,7 @@ const client = new TwitterApi(process.env.BEARER_TOKEN);
 // });
 
 // Function to search and read tweets
-const searchTweetsFromUser = (query, username) => {
+const searchTweetsFromUser = async (query, username) => {
     try {
         const tweets = await client.v2.search(query, {
             'tweet.fields': 'author_id,created_at',
