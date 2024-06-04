@@ -10,7 +10,7 @@ const client = new Twitter({
 });
 
 // Function to search and read tweets
-const searchTweetsFromUser = (query, username) => {
+const searchTweetsFromUser = async (query, username) => {
     const params = {
         screen_name: username,
         q: query,

@@ -8,7 +8,7 @@ const needle = require('needle');
 const token = process.env.BEARER_TOKEN;
 
 // Function to search and read tweets
-const searchTweetsFromUser = (query, username) => {
+const searchTweetsFromUser = async (query, username) => {
     try {
         // Edit query parameters below
         // specify a search query, and any additional fields that are required
