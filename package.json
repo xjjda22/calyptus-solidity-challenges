@@ -14,6 +14,7 @@
     "dotenv": "^16.4.5",
     "needle": "^3.3.1",
     "prettier": "^3.2.5",
+    "twitter": "^1.7.1",
     "twitter-api-v2": "^1.17.0"
   }
 }

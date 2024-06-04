@@ -1,7 +1,6 @@
-// File: index.js
-
-const { TwitterApi } = require('twitter-api-v2');
+// twiiter-api-v2-search-tweets
 require('dotenv').config();
+const { TwitterApi } = require('twitter-api-v2');
 
 // Load Twitter API keys and tokens from .env file
 const client = new TwitterApi(process.env.BEARER_TOKEN);
@@ -13,7 +12,7 @@ const client = new TwitterApi(process.env.BEARER_TOKEN);
 // });
 
 // Function to search and read tweets
-async function searchTweetsFromUser(query, username) {
+const searchTweetsFromUser = (query, username) => {
     try {
         const tweets = await client.v2.search(query, {
             'tweet.fields': 'author_id,created_at',
@@ -21,9 +20,9 @@ async function searchTweetsFromUser(query, username) {
             max_results: 100,
             query: `from:${username} "${query}"`,
         });
-        console.log('Tweets:', tweets.data);
+        console.log('tweets:', tweets.data);
     } catch (error) {
-        console.log('Error fetching tweets:', error);
+        console.log('tweets catch:', error);
     }
 }
 
