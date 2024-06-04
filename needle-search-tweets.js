@@ -1,8 +1,6 @@
-// Search for Tweets within the past seven days
-// https://developer.twitter.com/en/docs/twitter-api/tweets/search/quick-start/recent-search
-
-const needle = require('needle');
+// needle-search-tweets
 require('dotenv').config();
+const needle = require('needle');
 
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
@@ -10,7 +8,7 @@ require('dotenv').config();
 const token = process.env.BEARER_TOKEN;
 
 // Function to search and read tweets
-async function searchTweetsFromUser(query, username) {
+const searchTweetsFromUser = (query, username) => {
     try {
         // Edit query parameters below
         // specify a search query, and any additional fields that are required
@@ -29,10 +27,10 @@ async function searchTweetsFromUser(query, username) {
         });
 
         if (res.body) {
-            console.log('Tweets:', res.body);
+            console.log('tweets:', res.body);
         }
     } catch (error) {
-        console.log('Error fetching tweets:', error);
+        console.log('tweets catch:', error);
     }
 }
 
