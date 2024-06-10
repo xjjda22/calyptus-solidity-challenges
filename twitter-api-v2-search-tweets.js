@@ -35,4 +35,4 @@ const query = 'Solidity Challenge #';
 const username = 'CalyptusCareers';
 searchTweetsFromUser(query, username);
 console.log('end --');
-process.exit();
+// process.exit();
