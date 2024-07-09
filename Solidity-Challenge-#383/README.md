@@ -1,26 +1,35 @@
 # Solidity Challenge #383 🕵️‍♂️
 
-Have a look at this Auction contract. Would you feel confident deploying it? 👀
+Would you deploy this Auction contract? 👀
 ![Auction Contract](383.jpeg)
 
 ## Problem Explanation
 
-Imagine we have an auction where people can place bids. The highest bidder wins, and the others can get their money back.
+Imagine an auction where people bid. The highest bidder wins. Others get their money back. Here's the process:
 
-Here's the simplified process:
-
-1. **Bidding**: People send money to place bids. If someone bids higher than the current highest bid, they become the new highest bidder.
-2. **Withdraw**: People who were outbid can withdraw their money.
-3. **End Auction**: When the auction ends, the highest bid goes to the auction owner.
+1. **Bidding**: 
+   - People send money to bid.
+   - The highest bid wins.
+2. **Withdraw**: 
+   - Outbid people can withdraw their money.
+3. **End Auction**: 
+   - The highest bid goes to the auction owner.
 
 ## What Went Wrong?
 
-The original withdraw function has a bug called a re-entrancy attack. Let's see how this could happen with an example.
+The withdraw function has a re-entrancy bug. Here's an example:
 
 ### Example:
+1. Alice bids 1 ether.
+2. Bob bids 2 ether.
+3. Alice withdraws her 1 ether.
 
-1. Alice places a bid of 1 ether.
-2. Bob outbids her with 2 ether.
-3. Alice tries to withdraw her 1 ether.
+- If Alice's withdrawal goes to her smart contract, it could be malicious. It could call `withdraw` again before the first call finishes.
+- Alice's contract could keep asking for money back before the system realizes she was refunded.
 
-If Alice's withdrawal request goes to her smart contract (not her directly), this contract could be malicious and call `withdraw` again before the first call finishes. This way, Alice's contract could keep asking for her money back multiple times before the system realizes she has already been refunded.
+### Solution
+
+To prevent this, update the state before transferring money. This ensures withdrawals are marked as done before sending money.
+
+1. Update the state to mark the withdrawal.
+2. Transfer the money after updating the state.
