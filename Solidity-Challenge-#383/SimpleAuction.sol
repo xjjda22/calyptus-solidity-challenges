@@ -43,7 +43,7 @@ contract SimpleAuction {
         if (amount > 0) {
             pendingReturns[msg.sender] = 0;
 
-            (bool success,) = payable(msg.sender).call{value: amount}("");
+            (bool success, ) = payable(msg.sender).call{ value: amount }('');
             if (!success) {
                 pendingReturns[msg.sender] = amount;
                 return false;

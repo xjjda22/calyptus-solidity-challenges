@@ -6,4 +6,7 @@ module.exports = {
     singleQuote: true,
     trailingComma: 'es5',
     singleAttributePerLine: true,
+    bracketSpacing: true,
+    arrowParens: 'always',
+    plugins: ['prettier-plugin-solidity'], // Include the Solidity plugin
 };

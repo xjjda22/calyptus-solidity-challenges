@@ -1,4 +1,4 @@
-pragma solidity ^ 0.8.0;
+pragma solidity ^0.8.0;
 
 contract SimpleAuctionFix {
     address public beneficiary;
@@ -37,14 +37,14 @@ contract SimpleAuctionFix {
         emit HighestBidIncreased(msg.sender, msg.value);
     }
 
-    function withdraw() external returns(bool) {
+    function withdraw() external returns (bool) {
         uint256 amount = pendingReturns[msg.sender];
         if (amount > 0) {
             // Step 1: Mark the withdrawal as done before sending money
             pendingReturns[msg.sender] = 0;
 
             // Step 2: Send the money
-            (bool success,) = payable(msg.sender).call{ value: amount } ("");
+            (bool success, ) = payable(msg.sender).call{ value: amount }('');
             if (!success) {
                 // If sending money fails, revert the withdrawal state
                 pendingReturns[msg.sender] = amount;
