@@ -1,66 +1,22 @@
-## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## List of Challenges
 
-Foundry consists of:
+- [Solidity-Challenge-#380](./Solidity-Challenge-%23380/README.md)
+- [Solidity-Challenge-#381](./Solidity-Challenge-%23381/README.md)
+- [Solidity-Challenge-#382](./Solidity-Challenge-%23382/README.md)
+- [Solidity-Challenge-#383](./Solidity-Challenge-%23383/README.md)
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Installation Notes
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+### Hardhat
 ```
-
-### Test
-
-```shell
-$ forge test
+npx hardhat test
 ```
-
-### Format
-
-```shell
-$ forge fmt
+### Foundry
 ```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+forge init --force
+forge build
+forge test
 ```
