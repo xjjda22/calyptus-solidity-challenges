@@ -1,6 +1,6 @@
 # Solidity Challenge #396 🕵️‍♂️
 What are the potential security vulnerabilities in this smart contract?
-![MysticalVault Contract](396.jpeg)
+![MysticalVault Contract](396.jpeg){ width=50% }
 
 ### Problem Explanation
 The MysticalVault contract transfers its balance to the caller if four valid signatures are provided. There are several issues that could lead to failures or vulnerabilities.
