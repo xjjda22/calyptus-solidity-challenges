@@ -2,6 +2,7 @@
 ## List of Challenges
 
 - [Solidity-Challenge-#414](./Solidity-Challenge-%23414/README.md)
+- [Solidity-Challenge-#396](./Solidity-Challenge-%23396/README.md)
 - [Solidity-Challenge-#383](./Solidity-Challenge-%23383/README.md)
 - [Solidity-Challenge-#382](./Solidity-Challenge-%23382/README.md)
 
