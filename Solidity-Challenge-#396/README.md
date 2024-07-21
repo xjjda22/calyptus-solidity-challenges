@@ -1,4 +1,5 @@
 # Solidity Challenge #396 🕵️‍♂️
+
 What are the potential security vulnerabilities in this smart contract?
 ![MysticalVault Contract](396.jpeg)
 
