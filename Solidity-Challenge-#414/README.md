@@ -16,4 +16,5 @@ The ShortCircuit contract has inefficiencies in its withdrawal functions due to 
 3. costlyCheck is called unnecessarily, wasting computational resources.
 
 ### Solution
-1. Optimize the order of checks to ensure costlyCheck is called only when necessary.
+1. Perform simple checks (e.g., amount > 0) before expensive checks (e.g., costlyCheck).
+2. Avoid unnecessary computations to improve efficiency.
