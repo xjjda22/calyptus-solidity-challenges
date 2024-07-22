@@ -12,8 +12,8 @@ contract Challenge {
     }
 
     function stake() external payable {
-        require(block.timestamp < endTime, "Staking period has ended");
-        require(msg.value > 0, "Must stake a positive amount");
+        require(block.timestamp < endTime, 'Staking period has ended');
+        require(msg.value > 0, 'Must stake a positive amount');
 
         if (stakes[msg.sender] == 0) {
             stakers.push(msg.sender);
@@ -24,16 +24,16 @@ contract Challenge {
     }
 
     function claimReward() external {
-        require(block.timestamp > endTime, "Claiming period has not started yet");
+        require(block.timestamp > endTime, 'Claiming period has not started yet');
 
         uint256 userStake = stakes[msg.sender];
-        require(userStake > 0, "No stakes to claim rewards for");
+        require(userStake > 0, 'No stakes to claim rewards for');
 
         uint256 reward = (userStake * address(this).balance) / totalStakes;
 
         stakes[msg.sender] = 0;
         payable(msg.sender).transfer(reward);
     }
-    
+
     receive() external payable {}
 }

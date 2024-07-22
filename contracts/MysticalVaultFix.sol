@@ -15,11 +15,8 @@ contract MysticalVaultFix {
     function redeem(Signature[] calldata sigs) public {
         for (uint i = 0; i < sigs.length; i++) {
             Signature calldata sig = sigs[i];
-            require(
-                owner == ecrecover(sig.hash, sig.v, sig.r, sig.s),
-                "Invalid signature"
-            );
-            require(!lapsed[sig.hash], "Signature lapsed");
+            require(owner == ecrecover(sig.hash, sig.v, sig.r, sig.s), 'Invalid signature');
+            require(!lapsed[sig.hash], 'Signature lapsed');
             lapsed[sig.hash] = true;
         }
         payable(msg.sender).transfer(address(this).balance);

@@ -16,11 +16,8 @@ contract MysticalVault {
         for (uint i = 0; i < 4; i++) {
             Signature calldata sig = sigs[i];
             // Verify every signature
-            require(
-                owner == ecrecover(sig.hash, sig.v, sig.r, sig.s),
-                "Invalid signature"
-            );
-            require(!lapsed[sig.hash], "Signature lapsed");
+            require(owner == ecrecover(sig.hash, sig.v, sig.r, sig.s), 'Invalid signature');
+            require(!lapsed[sig.hash], 'Signature lapsed');
             lapsed[sig.hash] = true;
         }
         payable(msg.sender).transfer(address(this).balance);

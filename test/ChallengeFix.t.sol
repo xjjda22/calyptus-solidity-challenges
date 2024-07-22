@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "forge-std/Test.sol";
-import "../contracts/ChallengeFix.sol";
+import 'forge-std/Test.sol';
+import '../contracts/ChallengeFix.sol';
 
 contract ChallengeFixTest is Test {
     ChallengeFix public challengeFix;
@@ -15,7 +15,7 @@ contract ChallengeFixTest is Test {
         address addr1 = address(0x123);
         vm.deal(addr1, 1 ether);
         vm.prank(addr1);
-        challengeFix.stake{value: 1 ether}();
+        challengeFix.stake{ value: 1 ether }();
         assertEq(challengeFix.stakes(addr1), 1 ether);
     }
 
@@ -23,7 +23,7 @@ contract ChallengeFixTest is Test {
         address addr1 = address(0x123);
         vm.deal(addr1, 1 ether);
         vm.prank(addr1);
-        challengeFix.stake{value: 1 ether}();
+        challengeFix.stake{ value: 1 ether }();
         vm.warp(block.timestamp + 61); // Increase time to after staking period
 
         uint256 initialBalance = addr1.balance;

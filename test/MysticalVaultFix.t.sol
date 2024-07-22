@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "forge-std/Test.sol";
-import "../contracts/MysticalVaultFix.sol";
+import 'forge-std/Test.sol';
+import '../contracts/MysticalVaultFix.sol';
 
 contract MysticalVaultFixTest is Test {
     MysticalVaultFix vault;
@@ -27,8 +27,8 @@ contract MysticalVaultFixTest is Test {
 
         vault.redeem(sigs);
 
-        assertEq(address(this).balance, 10 ether, "Balance should be transferred to the redeemer");
-        assertEq(address(vault).balance, 0, "Vault balance should be zero");
+        assertEq(address(this).balance, 10 ether, 'Balance should be transferred to the redeemer');
+        assertEq(address(vault).balance, 0, 'Vault balance should be zero');
     }
 
     function testRedeemReplayAttack() public {
@@ -42,7 +42,7 @@ contract MysticalVaultFixTest is Test {
         }
 
         vault.redeem(sigs);
-        vm.expectRevert("Signature lapsed");
+        vm.expectRevert('Signature lapsed');
         vault.redeem(sigs); // Attempt to reuse the same signatures
     }
 
@@ -56,7 +56,7 @@ contract MysticalVaultFixTest is Test {
             sigs[i] = MysticalVaultFix.Signature(hash, v, r, s);
         }
 
-        vm.expectRevert("Invalid signature");
+        vm.expectRevert('Invalid signature');
         vault.redeem(sigs);
     }
 }

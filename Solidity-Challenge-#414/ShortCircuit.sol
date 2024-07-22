@@ -17,19 +17,13 @@ contract ShortCircuit {
     }
 
     function withdraw1(uint256 amount) external {
-        require(
-            amount > 0 && costlyCheck(msg.sender),
-            "Invalid amount or failed costly check"
-        );
+        require(amount > 0 && costlyCheck(msg.sender), 'Invalid amount or failed costly check');
         balanceOf[msg.sender] -= amount;
         // logic to send the withdrawn amount to the user...
     }
 
     function withdraw2(uint256 amount) external {
-        require(
-            costlyCheck(msg.sender) && amount > 0,
-            "Invalid amount or failed costly check"
-        );
+        require(costlyCheck(msg.sender) && amount > 0, 'Invalid amount or failed costly check');
         balanceOf[msg.sender] -= amount;
         // logic to send the withdrawn amount to the user...
     }

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import "forge-std/Test.sol";
-import "../contracts/ShortCircuitFix.sol";
+import 'forge-std/Test.sol';
+import '../contracts/ShortCircuitFix.sol';
 
 contract ShortCircuitFixTest is Test {
     ShortCircuitFix public shortCircuitFix;
@@ -33,7 +33,7 @@ contract ShortCircuitFixTest is Test {
         shortCircuitFix.deposit(1000);
 
         vm.prank(addr1);
-        vm.expectRevert("Invalid amount");
+        vm.expectRevert('Invalid amount');
         shortCircuitFix.withdraw(0);
     }
 
@@ -42,7 +42,7 @@ contract ShortCircuitFixTest is Test {
         shortCircuitFix.deposit(3);
 
         vm.prank(addr1);
-        vm.expectRevert("Failed costly check");
+        vm.expectRevert('Failed costly check');
         shortCircuitFix.withdraw(1);
     }
 }

@@ -17,8 +17,8 @@ contract ShortCircuitFix {
     }
 
     function withdraw(uint256 amount) external {
-        require(amount > 0, "Invalid amount");
-        require(costlyCheck(msg.sender), "Failed costly check");
+        require(amount > 0, 'Invalid amount');
+        require(costlyCheck(msg.sender), 'Failed costly check');
 
         balanceOf[msg.sender] -= amount;
         // logic to send the withdrawn amount to the user...

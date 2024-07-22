@@ -31,11 +31,11 @@ contract SwapVariables {
         gasUsedWithTuple = gasStart - gasleft();
 
         if (gasUsedWithTemp > gasUsedWithTuple) {
-            return "swapWithTemp used more gas";
+            return 'swapWithTemp used more gas';
         } else if (gasUsedWithTuple > gasUsedWithTemp) {
-            return "swapWithTuple used more gas";
+            return 'swapWithTuple used more gas';
         } else {
-            return "Both methods used the same amount of gas";
+            return 'Both methods used the same amount of gas';
         }
     }
 }
