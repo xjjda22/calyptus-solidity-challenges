@@ -1,13 +1,15 @@
 # Solidity Challenge #374 🕵️‍♂️
-
-Find the vulnerability in the DigitalWallet contract that could prevent users from accurately updating their wallet balances ♻️
+Find the vulnerability in the DigitalWallet contract that prevents accurate wallet balance updates ♻️
 ![DigitalWallet Contract](374.jpeg)
 
 ### What Went Wrong?
-The issue lies in the updateWalletBalance function where the wallet data is being accessed and modified. The wallet data should be updated in storage, but the code is using the memory keyword, which only creates a copy in memory and does not persist changes to the blockchain state.
+1. The updateWalletBalance function uses the memory keyword.
+2. This creates a temporary copy instead of updating the actual wallet balance in storage.
 
 ### Example
-When calling updateWalletBalance, the balance of the wallet will not be updated because the changes are made to a copy in memory rather than the original storage.
+1. When updateWalletBalance is called, the wallet balance does not change.
+2. The changes are made to a temporary copy in memory, not the original storage.
 
 ### Solution
-To fix this, the wallet data should be accessed using the storage keyword to ensure changes persist.
+1. Use the storage keyword to update the actual wallet balance.
+2. This ensures changes are saved to the blockchain.
