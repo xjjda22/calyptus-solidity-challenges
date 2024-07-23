@@ -1,15 +1,14 @@
 # Solidity Challenge #374 🕵️‍♂️
-
 From a game theory standpoint, what changes would you make to this staking contract to ensure fairness for all participants? 👨‍💻
 ![MysticalVault Contract](374.jpeg)
 
 ### What Went Wrong?
-Potential reentrancy issue when transferring rewards.
-No proper error handling for zero balance in the contract.
+1. Reentrancy issue when transferring rewards.
+2. No error handling for zero balance.
 
 ### Example
-If multiple users claim rewards simultaneously, a reentrancy attack could drain the contract balance.
+1. Multiple users claiming rewards simultaneously can drain the contract.
 
 ### Solution
-Use a checks-effects-interactions pattern to prevent reentrancy.
-Add a check for zero balance in the contract before transferring rewards.
+1. Use checks-effects-interactions pattern to prevent reentrancy.
+2. Check for zero balance before transferring rewards.
