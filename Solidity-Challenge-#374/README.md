@@ -1,5 +1,6 @@
 # Solidity Challenge #374 🕵️‍♂️
 From a game theory standpoint, what changes would you make to this staking contract to ensure fairness for all participants? 👨‍💻
+
 ![MysticalVault Contract](374.jpeg)
 
 ### What Went Wrong?
