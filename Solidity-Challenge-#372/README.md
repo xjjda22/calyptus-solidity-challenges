@@ -1,17 +1,17 @@
 # Solidity Challenge #372 🕵️‍♂️
-This contract enables adding and deleting items from a list, but it has an issue. 
+This contract lets you add and delete items from a list, but it has issues.
 
 ![ListItems Contract](372.jpeg)
 
-### What Went Wrong?
-1. Data Overwriting: The deleteItem function attempts to overwrite the deleted item with the last item, but it does not properly update the item ID of the moved item.
-2. Event Emission: The ItemDeleted event emits the itemId of the originally intended deletion, not the actual item ID of the deleted item after shifting.
-3.Missing Items Tracking: The contract does not correctly handle the removal of items, leading to potential data inconsistencies.
+### Issues
+1. Data Overwriting: The deleteItem function moves the last item to the deleted item's spot but doesn't update its ID.
+2. Event Emission: The ItemDeleted event emits the wrong item ID.
+3. Missing Items Tracking: The contract doesn't handle item removal correctly, causing data issues.
 
 ### Example
-If an item with ID 1 is deleted, and there are items with IDs 0, 1, 2, and 3 in the list, the last item (ID 3) is moved to index 1. However, the item's ID remains 3, causing a discrepancy in the stored data.
+If you delete item ID 1 from a list with items 0, 1, 2, and 3, item 3 moves to index 1 but keeps its ID 3. This causes a data mismatch.
 
 ### Solution
-1. Correct Data Overwriting: Properly update the ID of the last item when moving it.
-2. Correct Event Emission: Emit the correct item ID after the deletion.
-3. Consistent State Maintenance: Ensure the array reflects consistent state after deletions.
+1. Correct Data Overwriting: Update the ID of the moved item.
+2. Correct Event Emission: Emit the correct item ID after deletion.
+3. Consistent State Maintenance: Keep the list consistent after deletions.
