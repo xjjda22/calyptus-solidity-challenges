@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --write './**/*.{js,jsx,tsx,css,jso,sol}'",
-    "test": "forge test && npx hardhat test"
+    "test": "forge build && forge test && npx hardhat test"
   },
   "author": "",
   "license": "ISC",
