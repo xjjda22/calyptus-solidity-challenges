@@ -6,6 +6,7 @@
 - [Solidity-Challenge-#394](./Solidity-Challenge-%23394/README.md)
 - [Solidity-Challenge-#383](./Solidity-Challenge-%23383/README.md)
 - [Solidity-Challenge-#382](./Solidity-Challenge-%23382/README.md)
+- [Solidity-Challenge-#372](./Solidity-Challenge-%23372/README.md)
 - [Solidity-Challenge-#374](./Solidity-Challenge-%23374/README.md)
 - [Solidity-Challenge-#368](./Solidity-Challenge-%23368/README.md)
 - [Solidity-Challenge-#369](./Solidity-Challenge-%23369/README.md)
