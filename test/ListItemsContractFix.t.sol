@@ -13,15 +13,15 @@ contract ListItemsContractFixTest is Test {
 
     function testAddItem() public {
         listItems.addItem("Item 1");
-        ListItemsContractFix.Item memory item = listItems.items(0);
-        assertEq(item.name, "Item 1");
+        (uint256 id, string memory name) = listItems.items(0);
+        assertEq(name, "Item 1");
     }
 
     function testDeleteItem() public {
         listItems.addItem("Item 1");
         listItems.addItem("Item 2");
         listItems.deleteItem(0);
-        ListItemsContractFix.Item memory item = listItems.items(0);
-        assertEq(item.name, "Item 2");
+        (uint256 id, string memory name) = listItems.items(0);
+        assertEq(name, "Item 2");
     }
 }
