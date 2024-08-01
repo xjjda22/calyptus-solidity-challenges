@@ -17,7 +17,7 @@ contract ListItemsContract {
     }
 
     function deleteItem(uint256 itemId) public {
-        require(itemId < items.length, "Invalid item ID");
+        require(itemId < items.length, 'Invalid item ID');
 
         // Replace the item to delete with the last item in the list
         Item storage lastItem = items[items.length - 1];

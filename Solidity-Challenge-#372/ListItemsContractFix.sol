@@ -17,7 +17,7 @@ contract ListItemsContractFix {
     }
 
     function deleteItem(uint256 itemId) public {
-        require(itemId < items.length, "Invalid item ID");
+        require(itemId < items.length, 'Invalid item ID');
 
         uint256 lastIndex = items.length - 1;
         Item memory lastItem = items[lastIndex];

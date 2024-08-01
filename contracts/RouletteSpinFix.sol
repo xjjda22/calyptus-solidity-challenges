@@ -7,14 +7,14 @@ contract RouletteSpinFix {
     constructor() payable {}
 
     function spin() external payable {
-        require(msg.value == 10 ether, "You must send exactly 10 ether to play");
-        require(block.timestamp != lastSpinTime, "Only one transaction allowed per block");
+        require(msg.value == 10 ether, 'You must send exactly 10 ether to play');
+        require(block.timestamp != lastSpinTime, 'Only one transaction allowed per block');
 
         lastSpinTime = block.timestamp;
 
         if (block.timestamp % 15 == 0) {
-            (bool sent, ) = msg.sender.call{value: address(this).balance}("");
-            require(sent, "Failed to send Ether");
+            (bool sent, ) = msg.sender.call{ value: address(this).balance }('');
+            require(sent, 'Failed to send Ether');
         }
     }
 
